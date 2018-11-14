@@ -1,7 +1,7 @@
 #!/bin/bash
 # LICENSE UPL 1.0
 #
-# Copyright (c) 1982-2016 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 1982-2018 Oracle and/or its affiliates. All rights reserved.
 #
 # Since: December, 2016
 # Author: gerald.venzl@oracle.com
@@ -49,10 +49,11 @@ sed -i -e "s|###ORACLE_BASE###|$ORACLE_BASE|g" $INSTALL_DIR/$INSTALL_RSP && \
 sed -i -e "s|###ORACLE_HOME###|$ORACLE_HOME|g" $INSTALL_DIR/$INSTALL_RSP
 
 # Install Oracle binaries
-cd $INSTALL_DIR       && \
+cd $ORACLE_HOME       && \
+mv $INSTALL_DIR/$INSTALL_FILE_1 $ORACLE_HOME/ && \
 unzip $INSTALL_FILE_1 && \
 rm $INSTALL_FILE_1    && \
-$INSTALL_DIR/database/runInstaller -silent -force -waitforcompletion -responsefile $INSTALL_DIR/$INSTALL_RSP -ignoresysprereqs -ignoreprereq && \
+$ORACLE_HOME/runInstaller -silent -force -waitforcompletion -responsefile $INSTALL_DIR/$INSTALL_RSP -ignorePrereqFailure && \
 cd $HOME
 
 # Remove not needed components

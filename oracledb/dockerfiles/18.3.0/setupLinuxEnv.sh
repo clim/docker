@@ -1,7 +1,7 @@
 #!/bin/bash
 # LICENSE UPL 1.0
 #
-# Copyright (c) 1982-2016 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 1982-2018 Oracle and/or its affiliates. All rights reserved.
 #
 # Since: December, 2016
 # Author: gerald.venzl@oracle.com
@@ -19,7 +19,7 @@ ln -s $ORACLE_BASE/scripts /docker-entrypoint-initdb.d && \
 mkdir $ORACLE_BASE/oradata && \
 mkdir -p $ORACLE_HOME && \
 chmod ug+x $ORACLE_BASE/*.sh && \
-yum -y install oracle-database-server-12cR2-preinstall openssl && \
+yum -y install oracle-database-preinstall-18c openssl && \
 rm -rf /var/cache/yum && \
 ln -s $ORACLE_BASE/$PWD_FILE /home/oracle/ && \
 echo oracle:oracle | chpasswd && \
